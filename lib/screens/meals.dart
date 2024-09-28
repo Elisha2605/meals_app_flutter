@@ -7,11 +7,13 @@ class MealsScreen extends StatelessWidget {
   const MealsScreen(
       {super.key,
       this.title,
+      this.selectedPageIndex = 0,
       required this.meals,
       required this.onToggleFavorite});
 
   final String? title;
   final List<Meal> meals;
+  final int selectedPageIndex;
   final void Function(Meal meal) onToggleFavorite;
 
   void onSelectMeal(BuildContext context, Meal meal) {
@@ -56,6 +58,8 @@ class MealsScreen extends StatelessWidget {
                 onSelectMeal: (meal) {
                   onSelectMeal(context, meal);
                 },
+                onToggleFavorite: onToggleFavorite,
+                showDeleteButton: selectedPageIndex == 1 ? true : false,
               ));
     }
 

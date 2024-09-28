@@ -4,10 +4,12 @@ import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal, required this.onSelectMeal});
+  const MealItem({super.key, required this.meal, required this.onSelectMeal, this.showDeleteButton = false, this.onToggleFavorite});
 
   final Meal meal;
   final void Function(Meal meal) onSelectMeal;
+  final bool showDeleteButton;
+  final void Function(Meal meal)? onToggleFavorite;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -80,7 +82,20 @@ class MealItem extends StatelessWidget {
                       )
                     ],
                   ),
-                ))
+                )),
+            if (showDeleteButton)
+              Positioned(
+                bottom: 0,
+                right: 5,
+                child: IconButton(
+                    onPressed: () {
+                      onToggleFavorite!(meal);
+                    },
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    )),
+              )
           ],
         ),
       ),

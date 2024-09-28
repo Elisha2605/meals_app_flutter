@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/utils/constants.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.onSelectScreen});
@@ -41,11 +42,11 @@ class MainDrawer extends StatelessWidget {
           ),
           title: Text(
             'Meals',
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: Theme.of(context).colorScheme.onBackground,
                 fontSize: 24),
           ),
-          onTap: () => onSelectScreen('meals'),
+          onTap: () => onSelectScreen(NavigationScreens.meals),
         ),
         ListTile(
           leading: Icon(
@@ -59,7 +60,7 @@ class MainDrawer extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onBackground,
                 fontSize: 24),
           ),
-          onTap: () => onSelectScreen('filters'),
+          onTap: () => onSelectScreen(NavigationScreens.filters),
         )
       ]),
     );

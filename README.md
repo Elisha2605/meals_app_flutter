@@ -14,3 +14,42 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# App widget tree
+
+```
+Scaffold
+│
+├── AppBar
+│   └── Text(activePageTitle)
+│
+├── Drawer
+│   └── MainDrawer
+│       └── onSelectScreen: setScreen
+│
+├── Body
+│   └── activePage (varies based on _selectedPageIndex)
+│       ├── CategoriesScreen (if _selectedPageIndex == 0)
+│       │   └── availableMeals
+│       │   └── onToggleFavorite: _toggleMealFavoriteSatus
+│       └── MealsScreen (if _selectedPageIndex == 1)
+│           └── meals: _favoriteMeals
+│           └── onToggleFavorite: _toggleMealFavoriteSatus
+│
+└── BottomNavigationBar
+    ├── onTap: selectePage
+    ├── currentIndex: _selectedPageIndex
+    └── items
+        ├── BottomNavigationBarItem
+        └── BottomNavigationBarItem
+```
+
+```
+FilterScreens
+│
+├── AppBar
+│   └── Text("Filters")
+│
+└── Body
+    └── Various Filter Options
+```
